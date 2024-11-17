@@ -1,0 +1,27 @@
+<div data-controller="home" class="home-page">
+  <h2 class="title">Link shortener service</h2>
+  <div class="tab-buttons">
+    <button class="tab-button active" data-action="click->home#showTab" data-tab-name="encode" data-home-target="tabButton">Encode</button>
+    <button class="tab-button" data-action="click->home#showTab" data-tab-name="decode" data-home-target="tabButton">Decode</button>
+  </div>
+
+  <div id="encode" class="tab-content active" data-home-target="tabContent">
+    <%= form_with url: "/encode", class: "link-form", id: "encode-form", method: :post do |form| %>
+      <%= form.label :original_link, "Paste your long link here:" %>
+      <%= form.url_field :original_link, placeholder: "https://example.com/my-long-url" %>
+      <%= form.submit "Cut" %>
+    <% end %>
+    <div id="encode-response"></div>
+  </div>
+
+  <div id="decode" class="tab-content" data-home-target="tabContent">
+    <%= form_with url: "/decode", class: "link-form", id: "decode-form",
+          data: { turbo: false },
+          method: :get, remote: true do |form| %>
+      <%= form.label :short_link, "Paste your short link here:" %>
+      <%= form.url_field :short_link, placeholder: "https://#{request.host}/jj50YeBk" %>
+      <%= form.submit "Get" %>
+    <% end %>
+    <div id="decode-response"></div>
+  </div>
+</div>

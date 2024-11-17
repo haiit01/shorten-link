@@ -1,0 +1,93 @@
+.link-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.link-form label {
+  text-align: left;
+  font-size: 14px;
+}
+
+.link-form input[type="url"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.link-form input[type="submit"] {
+  width: 80px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.4s;
+  background-color: #fe5020;
+  color: #fff;
+  font-family: 'Avantt Regular';
+}
+
+.link-form input[type="submit"]:hover {
+  background-color: #333;
+}
+
+#shortened-url, #original-url {
+  text-decoration: none;
+  color: #007BFF;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+}
+
+.link-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.link-result button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#copy-success-decode, #copy-success-encode {
+  color: #007C8C;
+  display: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .link-form {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .tab-content {
+    width: 100%;
+  }
+
+  .link-form input[type="url"],
+  .link-form input[type="submit"] {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .link-form input[type="submit"] {
+    width: 100%;
+  }
+}

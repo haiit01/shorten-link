@@ -1,4 +1,4 @@
-## Potential attack vectors
+## Potential Attack Vectors
 
 ### 1. SQL Injection
 
@@ -96,3 +96,20 @@
 **Mitigation**:  
 - Implement rate limiting, use load balancing, and deploy DDoS protection services.
 - Caching.
+
+## Scaling and Collision Handling
+
+### 1. Scaling Strategy
+- Delete inactive records or set expiration values for records, and then remove them when expired.
+- Implement caching systems like Redis or CDN to reduce database query load.
+- Create indexes on the `original_url` and `short_url` columns to speed up query times, but consider the additional database resource usage.
+- Use database sharding techniques to distribute data across multiple servers and enhance scalability.
+- Implement load balancing to distribute incoming traffic efficiently across multiple servers.
+- Use distributed data systems like Elasticsearch, Solr.
+- Using background workers like Sidekiq or Delayed Job
+
+### 2. Collision Handling
+- Database Constraints: using a unique constraint on the short_url column ensures no two records can share the same shortened URL.
+- Database Transactions: using transactions ensures that if any step in the URL shortening process fails, all previous changes are rolled back, thus maintaining a consistent state in the database.
+- Pessimistic Locking: When a record is being written, a lock is applied to prevent other requests from writing to the same record simultaneously.
+- Optimistic Locking: This involves checking the current state of a record before updating it, to avoid conflicts when multiple requests try to create the same shortened URL.

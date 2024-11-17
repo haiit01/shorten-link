@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-  post "/encode", to: "links#encode"
-  get "/decode", to: "links#decode"
+  post "/encode", to: "links#encode", defaults: { format: :json }
+  get "/decode", to: "links#decode", defaults: { format: :json }
   get "/:short_code", to: "links#redirect_to_original"
 end

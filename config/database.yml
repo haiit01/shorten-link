@@ -18,6 +18,5 @@ test:
 production:
   <<: *default
   database: myapp_production
-  username: <%= ENV['MYAPP_DATABASE_USERNAME'] %>
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
-  host: <%= ENV['MYAPP_DATABASE_HOST'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: 5
